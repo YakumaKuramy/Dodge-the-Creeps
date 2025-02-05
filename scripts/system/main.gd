@@ -11,21 +11,32 @@ extends Node
 
 @onready var path_follow: PathFollow2D = $path_spawn_mobs/path_follow
 
-var score: int = 0
+@onready var hud: CanvasLayer = $hud
 
-func _ready() -> void:
-	new_game()
+@onready var background_music: AudioStreamPlayer = $background_music
+@onready var dead_effect: AudioStreamPlayer = $dead_effect
+
+@onready var virtual_joystick: Node2D = $VirtualJoystick
+
+var score: int = 0
 
 
 func new_game() -> void:
+	hud.update_score(score)
+	hud.show_message("Get Ready")
 	score = 0
 	player.start(start_position.position)
 	start_timer.start()
+	virtual_joystick.show()
 
 
 func game_over() -> void:
+	hud.show_game_over()
 	score_timer.stop()
 	mob_timer.stop()
+	get_tree().call_group("mobs","queue_free")
+	dead_effect.play()
+	virtual_joystick.hide()
 
 
 func _on_mob_timer_timeout() -> void:
@@ -43,6 +54,7 @@ func _on_mob_timer_timeout() -> void:
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	hud.update_score(score)
 
 
 func _on_start_timer_timeout() -> void:
