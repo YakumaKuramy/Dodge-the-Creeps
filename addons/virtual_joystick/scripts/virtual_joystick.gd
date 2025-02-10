@@ -71,4 +71,3 @@ func get_value() -> Vector2:
 		return get_button_pos().normalized()
 		
 	return Vector2.ZERO
-

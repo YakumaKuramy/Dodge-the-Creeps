@@ -43,7 +43,6 @@ func _process(delta: float) -> void:
 		animation.flip_v = velocity.y > 0
 
 
-
 func start(pos: Vector2) -> void:
 	position = pos
 	show()

@@ -39,12 +39,15 @@ curve = SubResource("Curve2D_vepwi")
 
 [node name="path_follow" type="PathFollow2D" parent="path_spawn_mobs"]
 
+[node name="line" type="Line2D" parent="path_spawn_mobs"]
+points = PackedVector2Array(720, 0, 0, 0, 0, 1280, 720, 1280, 720, 0)
+
 [node name="start_position" type="Marker2D" parent="."]
 position = Vector2(360, 887)
 
 [node name="VirtualJoystick" type="Node2D" parent="."]
-visible = false
-position = Vector2(360, 1050)
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(360, 1134)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("4_fr3uf")
 

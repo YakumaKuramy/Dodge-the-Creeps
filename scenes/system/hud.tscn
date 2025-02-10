@@ -1,28 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7cn304r2q364"]
+[gd_scene load_steps=6 format=3 uid="uid://b7cn304r2q364"]
 
 [ext_resource type="Script" path="res://scripts/system/hud.gd" id="1_scjrh"]
 [ext_resource type="FontFile" uid="uid://dkc7e5nmfwbsq" path="res://assets/fonts/Xolonium-Regular.ttf" id="1_vk8yg"]
+[ext_resource type="PackedScene" uid="uid://42wgt4dtawji" path="res://scenes/resource/debug.tscn" id="3_t4l5e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kxjgy"]
 font = ExtResource("1_vk8yg")
-font_size = 64
+font_size = 128
 
 [sub_resource type="LabelSettings" id="LabelSettings_s3dux"]
 font = ExtResource("1_vk8yg")
-font_size = 64
+font_size = 128
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_scjrh")
 
 [node name="lbl_score" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.454
-anchor_right = 0.547
-anchor_bottom = 0.108
-offset_left = 0.0799866
-offset_top = 64.0
-offset_right = 0.439972
-offset_bottom = 64.24
+anchor_left = 0.437
+anchor_top = 0.05
+anchor_right = 0.564
+anchor_bottom = 0.171
+offset_left = 0.359985
+offset_right = -0.0800171
+offset_bottom = 0.119995
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_kxjgy")
@@ -31,11 +32,11 @@ vertical_alignment = 1
 
 [node name="lbl_message" type="Label" parent="."]
 anchors_preset = -1
-anchor_top = 0.39
+anchor_top = 0.316
 anchor_right = 1.0
-anchor_bottom = 0.61
-offset_top = -0.300018
-offset_bottom = 0.299988
+anchor_bottom = 0.684
+offset_top = 94.42
+offset_bottom = -94.42
 grow_horizontal = 2
 grow_vertical = 2
 text = "Dodge the Creeps"
@@ -56,12 +57,14 @@ offset_bottom = 0.0799561
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_vk8yg")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 96
 text = "Start"
 
 [node name="timer_message" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="debug" parent="." instance=ExtResource("3_t4l5e")]
 
 [connection signal="pressed" from="button_start" to="." method="_on_button_start_pressed"]
 [connection signal="timeout" from="timer_message" to="." method="_on_timer_message_timeout"]
