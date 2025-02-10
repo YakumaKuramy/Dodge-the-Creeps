@@ -20,12 +20,14 @@ anchor_left = 0.454
 anchor_right = 0.547
 anchor_bottom = 0.108
 offset_left = 0.0799866
+offset_top = 64.0
 offset_right = 0.439972
-offset_bottom = 0.239998
+offset_bottom = 64.24
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_kxjgy")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="lbl_message" type="Label" parent="."]
 anchors_preset = -1

@@ -9,6 +9,7 @@ signal hit
 
 var screen_size: Vector2
 var velocity: Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	hide()

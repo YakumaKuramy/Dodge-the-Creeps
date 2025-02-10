@@ -10,7 +10,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_vepwi"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 720, 1280, 0, 0, 0, 0, 0, 1280, 0, 0, 0, 0, 0, 0)
 }
 point_count = 5
 
@@ -22,14 +22,6 @@ mob_scene = ExtResource("2_t2kfc")
 
 [node name="player" parent="." instance=ExtResource("1_2un8l")]
 visible = false
-
-[node name="VirtualJoystick" type="Node2D" parent="."]
-visible = false
-position = Vector2(240, 579)
-script = ExtResource("4_fr3uf")
-
-[node name="start_position" type="Marker2D" parent="."]
-position = Vector2(240, 450)
 
 [node name="timers" type="Node" parent="."]
 
@@ -47,6 +39,15 @@ curve = SubResource("Curve2D_vepwi")
 
 [node name="path_follow" type="PathFollow2D" parent="path_spawn_mobs"]
 
+[node name="start_position" type="Marker2D" parent="."]
+position = Vector2(360, 887)
+
+[node name="VirtualJoystick" type="Node2D" parent="."]
+visible = false
+position = Vector2(360, 1050)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("4_fr3uf")
+
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8b63j")
 volume_db = -24.0
@@ -54,10 +55,11 @@ autoplay = true
 
 [node name="dead_effect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_dm673")
+volume_db = -24.0
 
 [connection signal="start_game" from="hud" to="." method="new_game"]
 [connection signal="hit" from="player" to="." method="game_over"]
-[connection signal="analogic_chage" from="VirtualJoystick" to="player" method="_on_virtual_joystick_analogic_chage"]
 [connection signal="timeout" from="timers/mob_timer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="timers/score_timer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="timers/start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="analogic_chage" from="VirtualJoystick" to="player" method="_on_virtual_joystick_analogic_chage"]
