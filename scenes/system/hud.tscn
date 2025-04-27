@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7cn304r2q364"]
+[gd_scene load_steps=5 format=3 uid="uid://b7cn304r2q364"]
 
-[ext_resource type="Script" path="res://scripts/system/hud.gd" id="1_scjrh"]
+[ext_resource type="Script" uid="uid://vvhhrvlmqa8h" path="res://scripts/system/hud.gd" id="1_scjrh"]
 [ext_resource type="FontFile" uid="uid://dkc7e5nmfwbsq" path="res://assets/fonts/Xolonium-Regular.ttf" id="1_vk8yg"]
-[ext_resource type="PackedScene" uid="uid://42wgt4dtawji" path="res://scenes/resource/debug.tscn" id="3_t4l5e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kxjgy"]
 font = ExtResource("1_vk8yg")
@@ -63,8 +62,6 @@ text = "Start"
 [node name="timer_message" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="debug" parent="." instance=ExtResource("3_t4l5e")]
 
 [connection signal="pressed" from="button_start" to="." method="_on_button_start_pressed"]
 [connection signal="timeout" from="timer_message" to="." method="_on_timer_message_timeout"]

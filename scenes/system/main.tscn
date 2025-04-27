@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://gv4oko6361v4"]
+[gd_scene load_steps=10 format=3 uid="uid://gv4oko6361v4"]
 
 [ext_resource type="PackedScene" uid="uid://cs2eiwftu1njm" path="res://scenes/characters/player/player.tscn" id="1_2un8l"]
-[ext_resource type="Script" path="res://scripts/system/main.gd" id="1_x6yad"]
+[ext_resource type="Script" uid="uid://yqu121rckqdp" path="res://scripts/system/main.gd" id="1_x6yad"]
 [ext_resource type="PackedScene" uid="uid://bspbks4xxeasd" path="res://scenes/characters/mobs/mob.tscn" id="2_t2kfc"]
 [ext_resource type="PackedScene" uid="uid://b7cn304r2q364" path="res://scenes/system/hud.tscn" id="3_66wq0"]
-[ext_resource type="Script" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="4_fr3uf"]
+[ext_resource type="Script" uid="uid://ferawttlwpl8" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="4_fr3uf"]
 [ext_resource type="AudioStream" uid="uid://dxgklgupn20fo" path="res://assets/sounds/House In a Forest Loop.ogg" id="5_8b63j"]
+[ext_resource type="Script" uid="uid://bgn1blybjb2ao" path="res://scripts/resource/path_spawn_mobs.gd" id="5_t1oto"]
 [ext_resource type="AudioStream" uid="uid://c22yxd7325qtx" path="res://assets/sounds/gameover.wav" id="6_dm673"]
 
 [sub_resource type="Curve2D" id="Curve2D_vepwi"]
@@ -36,6 +37,7 @@ one_shot = true
 
 [node name="path_spawn_mobs" type="Path2D" parent="."]
 curve = SubResource("Curve2D_vepwi")
+script = ExtResource("5_t1oto")
 
 [node name="path_follow" type="PathFollow2D" parent="path_spawn_mobs"]
 
@@ -46,6 +48,7 @@ points = PackedVector2Array(720, 0, 0, 0, 0, 1280, 720, 1280, 720, 0)
 position = Vector2(360, 887)
 
 [node name="VirtualJoystick" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(360, 1134)
 scale = Vector2(1.5, 1.5)
@@ -53,12 +56,12 @@ script = ExtResource("4_fr3uf")
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8b63j")
-volume_db = -24.0
+volume_db = -80.0
 autoplay = true
 
 [node name="dead_effect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_dm673")
-volume_db = -24.0
+volume_db = -80.0
 
 [connection signal="start_game" from="hud" to="." method="new_game"]
 [connection signal="hit" from="player" to="." method="game_over"]
